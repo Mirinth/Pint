@@ -14,27 +14,13 @@ namespace Pint
         /// Initializes the memory manager with some blank data
         /// memory and no code memory.
         /// </summary>
-        public MemoryManager()
+        public MemoryManager(byte[] code, byte[] data)
         {
-            const int MAX_DATA_MEMORY = 0xffff;
-            _code = null;
-            _data = new byte[MAX_DATA_MEMORY];
-        }
+            _code = new byte[code.Length];
+            code.CopyTo(_code, 0);
 
-        /// <summary>
-        /// Initializes the program's code space.
-        /// Code is read-only and may only be initialized once.
-        /// </summary>
-        /// <param name="codeImage">An image of the program's code.</param>
-        public void LoadCode(byte[] codeImage)
-        {
-            if (_code != null)
-            {
-                throw new InvalidOperationException("Re-initialization of the memory manager is unsupported");
-            }
-
-            _code = new byte[codeImage.Length];
-            codeImage.CopyTo(_code, 0);
+            _data = new byte[data.Length];
+            data.CopyTo(_data, 0);
         }
 
         /// <summary>
