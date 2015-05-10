@@ -35,6 +35,7 @@ namespace Pint
         /// </param>
         public static void Run(MemoryManager mmu)
         {
+            UInt32 instruction = FetchInstruction(mmu);
         }
 
         /// <summary>
@@ -43,6 +44,7 @@ namespace Pint
         /// </summary>
         /// <param name="mmu">The program's memory.</param>
         /// <returns>The next instruction.</returns>
+        public static UInt32 FetchInstruction(MemoryManager mmu)
         {
             UInt32 instruction = mmu.ReadCode(_ip);
             _ip++;
