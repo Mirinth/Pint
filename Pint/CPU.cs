@@ -25,5 +25,17 @@ namespace Pint
                 _registers[i] = 0;
             }
         }
+
+        /// <summary>
+        /// Executes instructions in the MemoryManager until the
+        /// contained program finishes.
+        /// </summary>
+        /// <param name="mmu">
+        /// A MemoryManager containing the program to run.
+        /// </param>
+        public static void Run(MemoryManager mmu)
+        {
+            
+        }
     }
 }
