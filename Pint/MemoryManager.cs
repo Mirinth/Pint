@@ -28,7 +28,7 @@ namespace Pint
         /// </summary>
         /// <param name="index">The index to read from.</param>
         /// <returns>The byte in the code image at index.</returns>
-        public byte ReadCode(int index)
+        public byte ReadCode(UInt32 index)
         {
             return _code[index];
         }
@@ -38,7 +38,7 @@ namespace Pint
         /// </summary>
         /// <param name="index">The index to read from.</param>
         /// <returns>The byte in the data image at index.</returns>
-        public byte ReadData(int index)
+        public byte ReadData(UInt32 index)
         {
             return _data[index];
         }
@@ -48,7 +48,7 @@ namespace Pint
         /// </summary>
         /// <param name="index">The index to write to.</param>
         /// <param name="value">The value to write.</param>
-        public void WriteData(int index, byte value)
+        public void WriteData(UInt32 index, byte value)
         {
             _data[index] = value;
         }
