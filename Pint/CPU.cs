@@ -100,7 +100,14 @@ namespace Pint
         /// <returns>The handler associated with the instruction.</returns>
         public static InstructionHandler Decode(UInt32 instruction)
         {
-            throw new NotImplementedException();
+            switch (instruction)
+            {
+                default:
+                    // This should trap to the system instead of
+                    // crashing Pint, but there's no system yet.
+                    // TODO: fix that.
+                    throw new NotImplementedException();
+            }
         }
     }
 }
