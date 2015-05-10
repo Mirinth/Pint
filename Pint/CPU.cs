@@ -35,7 +35,12 @@ namespace Pint
         /// </param>
         public static void Run(MemoryManager mmu)
         {
+            UInt32 src1,
+                   src2,
+                   dest;
+
             UInt32 instruction = FetchInstruction(mmu);
+            FetchRegisters(instruction, out src1, out src2, out dest);
         }
 
         /// <summary>
@@ -49,6 +54,30 @@ namespace Pint
             UInt32 instruction = mmu.ReadCode(_ip);
             _ip++;
             return instruction;
+        }
+
+        /// <summary>
+        /// Fetches the registers associated with a given instruction.
+        /// Note that some or all of these may be garbage if the instruction
+        /// doesn't actually need a particular register (e.g. if the instruction
+        /// only uses one source register, then src2 will be garbage).
+        /// </summary>
+        /// <param name="instruction">The instruction to fetch registers for.</param>
+        /// <param name="dest">The destination register for the instruction.</param>
+        /// <param name="src1">The first source register for the instruction.</param>
+        /// <param name="src2">The second source register for the instruction.</param>
+        public static void FetchRegisters(UInt32 instruction, out UInt32 dest, out UInt32 src1, out UInt32 src2)
+        {
+            const int mask = 0x0f; // Zeros all but the first four bits
+            const int dest_start = 7;
+            const int src1_start = 15;
+            const int src2_start = 20;
+
+            // Shift the desired value so it starts at position 0,
+            // then mask away everything else.
+            dest = (instruction >> dest_start) & mask;
+            src1 = (instruction >> src1_start) & mask;
+            src2 = (instruction >> src2_start) & mask;
         }
     }
 }
