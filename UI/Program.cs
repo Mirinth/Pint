@@ -13,7 +13,13 @@ namespace UI
         /// <param name="args">Ignored.</param>
         static void Main(string[] args)
         {
-            
+            const string code_path = @"code.bin";
+            const string data_path = @"data.bin";
+
+            byte[] code = File.ReadAllBytes(code_path);
+            byte[] data = File.ReadAllBytes(data_path);
+
+            Pint.MemoryManager mm = new Pint.MemoryManager(code, data);
         }
     }
 }
