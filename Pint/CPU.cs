@@ -35,7 +35,18 @@ namespace Pint
         /// </param>
         public static void Run(MemoryManager mmu)
         {
-            
+        }
+
+        /// <summary>
+        /// Fetches the next instruction from memory
+        /// and updates the instruction pointer.
+        /// </summary>
+        /// <param name="mmu">The program's memory.</param>
+        /// <returns>The next instruction.</returns>
+        {
+            UInt32 instruction = mmu.ReadCode(_ip);
+            _ip++;
+            return instruction;
         }
     }
 }
