@@ -11,8 +11,8 @@ namespace Pint
         private byte[] _data;
 
         /// <summary>
-        /// Initializes the memory manager some blank data memory
-        /// and no code memory.
+        /// Initializes the memory manager with some blank data
+        /// memory and no code memory.
         /// </summary>
         public MemoryManager()
         {
