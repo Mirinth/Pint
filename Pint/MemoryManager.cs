@@ -5,7 +5,7 @@ namespace Pint
     /// <summary>
     /// Manages the memory visible to the program.
     /// </summary>
-    class MemoryManager
+    public class MemoryManager
     {
         private byte[] _code;
         private byte[] _data;
