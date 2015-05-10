@@ -26,6 +26,7 @@ namespace Pint
         /// Code is read-only and may only be initialized once.
         /// </summary>
         /// <param name="codeImage">An image of the program's code.</param>
+        public void LoadCode(byte[] codeImage)
         {
             if (_code != null)
             {
@@ -34,6 +35,36 @@ namespace Pint
 
             _code = new byte[codeImage.Length];
             codeImage.CopyTo(_code, 0);
+        }
+
+        /// <summary>
+        /// Reads from the code image at the given index.
+        /// </summary>
+        /// <param name="index">The index to read from.</param>
+        /// <returns>The byte in the code image at index.</returns>
+        public byte ReadCode(int index)
+        {
+            return _code[index];
+        }
+
+        /// <summary>
+        /// Reads from the data image at the given index.
+        /// </summary>
+        /// <param name="index">The index to read from.</param>
+        /// <returns>The byte in the data image at index.</returns>
+        public byte ReadData(int index)
+        {
+            return _data[index];
+        }
+
+        /// <summary>
+        /// Writes to the data image at the given index.
+        /// </summary>
+        /// <param name="index">The index to write to.</param>
+        /// <param name="value">The value to write.</param>
+        public void WriteData(int index, byte value)
+        {
+            _data[index] = value;
         }
     }
 }
