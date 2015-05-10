@@ -19,7 +19,8 @@ namespace UI
             byte[] code = File.ReadAllBytes(code_path);
             byte[] data = File.ReadAllBytes(data_path);
 
-            Pint.MemoryManager mm = new Pint.MemoryManager(code, data);
+            Pint.MemoryManager mmu = new Pint.MemoryManager(code, data);
+            Pint.CPU.Run(mmu);
         }
     }
 }
