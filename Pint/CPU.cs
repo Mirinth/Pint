@@ -13,6 +13,18 @@ namespace Pint
         private static UInt32[] _registers;
 
         /// <summary>
+        /// Executes the operation that handles an instruction.
+        /// </summary>
+        /// <param name="instruction">
+        /// The instruction associated with the operation.
+        /// The instruction may contain extra data needed by the handler.
+        /// </param>
+        /// <param name="dest">The destination register.</param>
+        /// <param name="src1">The first source register.</param>
+        /// <param name="src2">The second source register.</param>
+        public delegate void InstructionHandler(UInt32 instruction, UInt32 dest, UInt32 src1, UInt32 src2);
+
+        /// <summary>
         /// Initializes the CPU
         /// </summary>
         static CPU()
@@ -41,6 +53,7 @@ namespace Pint
 
             UInt32 instruction = FetchInstruction(mmu);
             FetchRegisters(instruction, out src1, out src2, out dest);
+            InstructionHandler dispatch = Decode(instruction);
         }
 
         /// <summary>
@@ -78,6 +91,16 @@ namespace Pint
             dest = (instruction >> dest_start) & mask;
             src1 = (instruction >> src1_start) & mask;
             src2 = (instruction >> src2_start) & mask;
+        }
+
+        /// <summary>
+        /// Decodes an instruction, identifying the method which handles it.
+        /// </summary>
+        /// <param name="instruction">The instruction to decode.</param>
+        /// <returns>The handler associated with the instruction.</returns>
+        public static InstructionHandler Decode(UInt32 instruction)
+        {
+            throw new NotImplementedException();
         }
     }
 }
