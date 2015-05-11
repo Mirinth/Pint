@@ -22,6 +22,7 @@ namespace UI
                 TextReader reader = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read));
                 Pint.UserInterface p = new Pint.UserInterface(Console.WriteLine);
                 p.Run(reader);
+                Console.WriteLine("Done!");
             }
             catch (Exception)
             {
