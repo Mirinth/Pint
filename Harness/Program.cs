@@ -15,6 +15,8 @@ namespace UI
         {
             Pint.UserInterface p = new Pint.UserInterface(Console.WriteLine);
             p.Run();
+
+            Console.ReadLine();
         }
     }
 }
