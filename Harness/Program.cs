@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace UI
 {
@@ -13,8 +14,23 @@ namespace UI
         /// <param name="args">Ignored.</param>
         static void Main(string[] args)
         {
-            Pint.UserInterface p = new Pint.UserInterface(Console.WriteLine);
-            p.Run();
+            if (args.Length < 1)
+            {
+                Console.WriteLine("Please give a file name to use when running the program.");
+                Console.WriteLine("e.g. Harness.exe path/to/some/file.pcf");
+                return;
+            }
+
+            try
+            {
+                TextReader reader = new StreamReader(new FileStream(args[0], FileMode.Open, FileAccess.Read, FileShare.Read));
+                Pint.UserInterface p = new Pint.UserInterface(Console.WriteLine);
+                p.Run(reader);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("I give up.");
+            }
 
             Console.ReadLine();
         }
