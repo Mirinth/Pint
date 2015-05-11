@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using System;
 
 namespace UI
 {
@@ -13,14 +13,8 @@ namespace UI
         /// <param name="args">Ignored.</param>
         static void Main(string[] args)
         {
-            const string code_path = @"code.bin";
-            const string data_path = @"data.bin";
-
-            byte[] code = File.ReadAllBytes(code_path);
-            byte[] data = File.ReadAllBytes(data_path);
-
-            Pint.MemoryManager mmu = new Pint.MemoryManager(code, data);
-            Pint.CPU.Run(mmu);
+            Pint.UserInterface p = new Pint.UserInterface(Console.WriteLine);
+            p.Run();
         }
     }
 }
