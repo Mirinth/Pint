@@ -36,13 +36,8 @@ namespace Pint
                 {
                     if (line.Length > 0)
                     {
-                        int lineVal;
-
-                        if (int.TryParse(line, out lineVal))
-                        {
-                            result = lineVal;
-                            resultSet = true;
-                        }
+                        result = int.Parse(line);
+                        resultSet = true;
                     }
                 }
 
