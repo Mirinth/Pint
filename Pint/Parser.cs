@@ -49,7 +49,14 @@ namespace Pint
                     throw new FormatException();
                 }
 
-                result.Add(name, value);
+                if (result.ContainsKey(name))
+                {
+                    result[name] = value;
+                }
+                else
+                {
+                    result.Add(name, value);
+                }
             }
 
             return result;
