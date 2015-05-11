@@ -20,7 +20,39 @@ namespace Pint
         /// <returns>A runnable code.</returns>
         public static Dictionary<string, UInt32> Parse(List<string> pieces)
         {
-            
+            const int name_offset = 0;
+            const int splitter_offset = 1;
+            const int value_offset = 2;
+            const int newline_offset = 3;
+            const string splitter_value = " = ";
+
+            Dictionary<string, UInt32> result = new Dictionary<string, uint>();
+            string name = string.Empty;
+            string splitter = string.Empty;
+            UInt32 value = 0;
+            string newline = string.Empty;
+
+            for (int i = 0; i < pieces.Count - 4; i += 4)
+            {
+                if (IsNewline(pieces[i]))
+                {
+                    continue;
+                }
+
+                name = pieces[i + name_offset];
+                splitter = pieces[i + splitter_offset];
+                value = UInt32.Parse(pieces[i + value_offset]);
+                newline = pieces[i + newline_offset];
+
+                if (splitter != splitter_value || !IsNewline(newline))
+                {
+                    throw new FormatException();
+                }
+
+                result.Add(name, value);
+            }
+
+            return result;
         }
 
         /// <summary>
