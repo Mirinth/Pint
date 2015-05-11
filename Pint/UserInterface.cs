@@ -9,12 +9,13 @@ namespace Pint
     /// </summary>
     public class UserInterface
     {
-        private Action<string> write;
+        public delegate void WriterDelegate(string format, params object[] values);
+        private WriterDelegate write;
 
         /// <summary>
         /// Initializes the UserInterface.
         /// </summary>
-        public UserInterface(Action<string> writer)
+        public UserInterface(WriterDelegate writer)
         {
             write = writer;
         }
