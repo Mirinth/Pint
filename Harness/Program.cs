@@ -14,7 +14,7 @@ namespace UI
         /// <param name="args">Ignored.</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a file name to run: ");
+            Console.Write("Enter a file name to run: ");
             string path = Console.ReadLine();
 
             try
