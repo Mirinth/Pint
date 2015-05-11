@@ -24,6 +24,7 @@ namespace Pint
         public void Run()
         {
             const string hard_coded_file_path = "code.pcf";
+            const int max_line_length = 9;
 
             int result = 0;
             bool resultSet = false;
@@ -34,6 +35,11 @@ namespace Pint
 
                 foreach (string line in lines)
                 {
+                    if (line.Length > max_line_length)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+
                     if (line.Length > 0)
                     {
                         result = int.Parse(line);
