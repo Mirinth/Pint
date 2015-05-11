@@ -14,16 +14,12 @@ namespace UI
         /// <param name="args">Ignored.</param>
         static void Main(string[] args)
         {
-            if (args.Length < 1)
-            {
-                Console.WriteLine("Please give a file name to use when running the program.");
-                Console.WriteLine("e.g. Harness.exe path/to/some/file.pcf");
-                return;
-            }
+            Console.WriteLine("Enter a file name to run: ");
+            string path = Console.ReadLine();
 
             try
             {
-                TextReader reader = new StreamReader(new FileStream(args[0], FileMode.Open, FileAccess.Read, FileShare.Read));
+                TextReader reader = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read));
                 Pint.UserInterface p = new Pint.UserInterface(Console.WriteLine);
                 p.Run(reader);
             }
