@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Pint
 {
@@ -21,39 +22,16 @@ namespace Pint
         /// <summary>
         /// Runs the interpreter.
         /// </summary>
-        public void Run()
+        public void Run(TextReader reader)
         {
-            const string hard_coded_file_path = "code.pcf";
-            const int max_line_length = 9;
-
-            int result = 0;
-            bool resultSet = false;
-
             try
             {
-                string[] lines = File.ReadAllLines(hard_coded_file_path);
+                List<string> pieces = Scanner.Scan(reader);
+                Dictionary<string, UInt32> parsed = Parser.Parse(pieces);
 
-                foreach (string line in lines)
+                foreach(KeyValuePair<string, UInt32> kvp in parsed)
                 {
-                    if (line.Length > max_line_length)
-                    {
-                        throw new ArgumentOutOfRangeException();
-                    }
-
-                    if (line.Length > 0)
-                    {
-                        result = int.Parse(line);
-                        resultSet = true;
-                    }
-                }
-
-                if (resultSet)
-                {
-                    write(result.ToString());
-                }
-                else
-                {
-                    write("I give up.");
+                    write("{0} = {1}", kvp.Key, kvp.Value);
                 }
             }
             catch (Exception)
