@@ -20,7 +20,24 @@ namespace Pint
         /// <returns>A runnable code.</returns>
         public static Dictionary<string, UInt32> Parse(List<string> pieces)
         {
+            
+        }
 
+        /// <summary>
+        /// Tests whether a string is a newline.
+        /// </summary>
+        /// <param name="test">The string to test.</param>
+        /// <returns>Whether the string is a newline.</returns>
+        public static bool IsNewline(string test)
+        {
+            if (test == "\r\n" || test == "\r" || test == "\n" || test == "\n\r")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
