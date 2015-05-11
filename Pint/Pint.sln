@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pint", "Pint.csproj", "{2291D75F-F394-4141-96E6-99B70EBD4E77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "..\UI\UI.csproj", "{F64ED534-8F25-44B7-95BE-38EC592ED06F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harness", "..\Harness\Harness.csproj", "{F64ED534-8F25-44B7-95BE-38EC592ED06F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
