@@ -7,8 +7,8 @@ The rules of The Language are very simple.
 - The Code File is in the same folder as Pint.
 - The Code File has Digits and Line Ends.
 - Lines can have up to 9 Digits.
-- Lines with zero Digits are ignored.
-- Lines with less than zero Digits are also ignored.
+- Lines with zero characters are ignored.
+- Lines with less than zero characters are also ignored.
 - The number from the last line is shown on the screen.
 - If anything bad happens, Pint gives up and quits.
 
