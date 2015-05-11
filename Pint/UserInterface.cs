@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Pint
@@ -12,9 +8,57 @@ namespace Pint
     /// </summary>
     public class UserInterface
     {
+        private Action<string> write;
+
         /// <summary>
         /// Initializes the UserInterface.
         /// </summary>
-        public UserInterface() { } // Actually, there's nothing to do here.
+        public UserInterface(Action<string> writer)
+        {
+            write = writer;
+        }
+
+        /// <summary>
+        /// Runs the interpreter.
+        /// </summary>
+        public void Run()
+        {
+            const string hard_coded_file_path = "code.pcf";
+
+            int result = 0;
+            bool resultSet = false;
+
+            try
+            {
+                string[] lines = File.ReadAllLines(hard_coded_file_path);
+
+                foreach (string line in lines)
+                {
+                    if (line.Length > 0)
+                    {
+                        int lineVal;
+
+                        if (int.TryParse(line, out lineVal))
+                        {
+                            result = lineVal;
+                            resultSet = true;
+                        }
+                    }
+                }
+
+                if (resultSet)
+                {
+                    write(result.ToString());
+                }
+                else
+                {
+                    write("I give up.");
+                }
+            }
+            catch (Exception)
+            {
+                write("I give up.");
+            }
+        }
     }
 }
