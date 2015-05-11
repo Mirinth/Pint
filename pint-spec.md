@@ -1,15 +1,21 @@
+﻿Pint spec
+version 1/(∞ - 1)
+
+
+
 Pint interprets a language. It reads the directions and follows them exactly as told. This explains how to talk in The Language.
 
 The rules of The Language are very simple.
 
 - The Language has exactly one Code File.
-- The Code File is named "code.pcf"
-- The Code File is in the same folder as Pint.
-- The Code File has Digits and Line Ends.
-- Lines can have up to 9 Digits.
-- Lines with zero characters are ignored.
-- Lines with less than zero characters are also ignored.
-- The number from the last line is shown on the screen.
+- Pint uses whatever data source you give it as its Code File.
+- The Code File can be anywhere, everywhere, and nowhere.
+- The Code File has letters, numbers, spaces, equal signs, and line ends.
+- Each line looks like "abc = 123"
+- The letters are variable names; the numbers are the values.
+- Numbers can be up to 9 digits. Names can be any length.
+- Empty lines are ignored
+- The name and value of the last line is shown on the screen.
 - If anything bad happens, Pint gives up and quits.
 
 The End.
