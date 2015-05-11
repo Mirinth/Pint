@@ -15,7 +15,7 @@ The rules of The Language are very simple.
 - The letters are variable names; the numbers are the values.
 - Numbers can be up to 9 digits. Names can be any length.
 - Empty lines are ignored
-- The name and value of the last line is shown on the screen.
+- Each name and its final value is shown on the screen.
 - If anything bad happens, Pint gives up and quits.
 
 The End.
