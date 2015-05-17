@@ -30,9 +30,16 @@ namespace Pint
                 List<string> pieces = Scanner.Scan(reader);
                 Dictionary<string, UInt32> parsed = Parser.Parse(pieces);
 
-                foreach(KeyValuePair<string, UInt32> kvp in parsed)
+                if (parsed.Count > 0)
                 {
-                    write("{0} = {1}", kvp.Key, kvp.Value);
+                    foreach (KeyValuePair<string, UInt32> kvp in parsed)
+                    {
+                        write("{0} = {1}", kvp.Key, kvp.Value);
+                    }
+                }
+                else
+                {
+                    write("No values.");
                 }
             }
             catch (Exception)
